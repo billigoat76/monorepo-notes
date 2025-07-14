@@ -1,69 +1,122 @@
-# monorepo-notes
-A beginner-friendly guide to Monorepos
-What are monorepos?
-# As the name suggests, a single repository (on github lets say) that holds all your frontend, backend, devops code.
+Here is a cleanly formatted version of your `README.md` for **monorepo-notes**:
 
-Example of monorepos : 
-<img width="2452" height="750" alt="image" src="https://github.com/user-attachments/assets/8eb9f028-5024-471c-b67a-9f13929cd269" />
+---
 
-<img width="2512" height="1304" alt="image" src="https://github.com/user-attachments/assets/b6461d1b-0bb2-467d-9d84-407b4e6a9af1" />
+# 🧱 Monorepo Notes
 
-Why monorepos ?
+> A beginner-friendly guide to Monorepos.
 
-Why not Simple folders?
-Why cant I just store services (backend, frontend etc) in various top level folders?
-You can, and you should if your
-1.Services are highly decoupled (dont share any code)
-2.Services don’t depend on each other.
+---
 
-For eg - A codebase which has a Golang service and a JS service
+## 📌 What Are Monorepos?
 
-<img width="744" height="590" alt="image" src="https://github.com/user-attachments/assets/be3eeed2-8b82-44dd-bb43-e6cf3c2def7d" />
+As the name suggests, a **monorepo** is a single repository (e.g., on GitHub) that holds all your frontend, backend, and DevOps code.
 
-Why monorepos?
-    1.Shared Code Reuse
-    2.Enhanced Collaboration
-    3.Optimized Builds and CI/CD: Tools like TurboRepo offer smart caching and task execution strategies that can significantly reduce build and testing times.
-    4.Centralized Tooling and Configuration: Managing build tools, linters, formatters, and other configurations is simpler in a monorepo because you can have a single set of tools for the entire project.
-    <img width="2224" height="1596" alt="image" src="https://github.com/user-attachments/assets/fd1b0cec-a1e2-4e09-9160-fe924b719c6c" />
+### ✅ Example of Monorepos
 
+![Monorepo Example 1](https://github.com/user-attachments/assets/8eb9f028-5024-471c-b67a-9f13929cd269)
+![Monorepo Example 2](https://github.com/user-attachments/assets/b6461d1b-0bb2-467d-9d84-407b4e6a9af1)
 
-Common monorepo framework in Node.js : 
-1 Lerna - https://lerna.js.org/
-2 nx - https://github.com/nrwl/nx
-3 Turborepo - https://turbo.build/ — Not exactly a monorepo framework
-4 Yarn/npm workspaces - https://classic.yarnpkg.com/lang/en/docs/workspaces/
+---
 
-We’ll be going through turborepo since it’s the most relevant one today and provides more things (like build optimisations) that others don’t
-<img width="926" height="662" alt="image" src="https://github.com/user-attachments/assets/e2f8e5df-1b1a-4782-9a02-501ced3c450d" />
+## ❓ Why Monorepos?
 
-Before diving deep into the Monorepos,it will help to know what is Build System , Build System Orchestrator and Turborepo!
-<img width="1166" height="834" alt="image" src="https://github.com/user-attachments/assets/639f27cb-880c-4842-ade3-42e6a04afaf3" />
-Build System
-A build system automates the process of transforming source code written by developers into binary code that can be executed by a computer. For JavaScript and TypeScript projects, this process can include transpilation (converting TS to JS), bundling (combining multiple files into fewer files), minification (reducing file size), and more. A build system might also handle running tests, linting, and deploying applications.
+### Why Not Just Use Separate Folders?
 
-Build System Orchestrator
-TurboRepo acts more like a build system orchestrator rather than a direct build system itself. It doesn't directly perform tasks like transpilation, bundling, minification, or running tests. Instead, TurboRepo allows you to define tasks in your monorepo that call other tools (which are the actual build systems) to perform these actions. 
-These tools can include anything from tsc, vite etc
+You *can* and *should* — if:
 
-Monorepo Framework
-A monorepo framework provides tools and conventions for managing projects that contain multiple packages or applications within a single repository (monorepo). This includes dependency management between packages, workspace configuration.
+1. Your services are highly decoupled (don’t share any code).
+2. Your services don’t depend on each other.
 
+🧠 For example: A codebase with a **Golang** service and a **JavaScript** service.
 
-Turborepo as a build system orchestrator
-Turborepo is a build system orchestrator . 
-The key feature of TurboRepo is its ability to manage and optimize the execution of these tasks across your monorepo. It does this through:
+![Decoupled Example](https://github.com/user-attachments/assets/be3eeed2-8b82-44dd-bb43-e6cf3c2def7d)
 
-    Caching: TurboRepo caches the outputs of tasks, so if you run a task and then run it again without changing any of the inputs (source files, dependencies, configuration), TurboRepo can skip the actual execution and provide the output from the cache. This can significantly speed up build times, especially in continuous integration environments.
+---
 
-    Parallelization: It can run independent tasks in parallel, making efficient use of your machine's resources. This reduces the overall time needed to complete all tasks in your project.
+## 🛠️ Advantages of Monorepos
 
-    Dependency Graph Awareness: TurboRepo understands the dependency graph of your monorepo. This means it knows which packages depend on each other and can ensure tasks are run in the correct order.
+1. **Shared Code Reuse**
+2. **Enhanced Collaboration**
+3. **Optimized Builds and CI/CD**
+   Tools like **Turborepo** offer smart caching and task execution strategies that significantly reduce build and test times.
+4. **Centralized Tooling and Configuration**
+   One set of linters, formatters, build tools, etc., for the whole codebase.
 
-<img width="1920" height="1106" alt="image" src="https://github.com/user-attachments/assets/8eb8b3ff-79d5-4f24-a6d3-f26c24c11084" />
+![Monorepo Benefits](https://github.com/user-attachments/assets/fd1b0cec-a1e2-4e09-9160-fe924b719c6c)
 
+---
 
+## 🔧 Common Monorepo Tools (Node.js)
 
+| Tool                                 | Link                                                              | Notes                               |
+| ------------------------------------ | ----------------------------------------------------------------- | ----------------------------------- |
+| **Lerna**                            | [lerna.js.org](https://lerna.js.org/)                             | Popular tool for managing monorepos |
+| **Nx**                               | [Nx GitHub](https://github.com/nrwl/nx)                           | Powerful & extensible framework     |
+| **Turborepo**                        | [turbo.build](https://turbo.build/)                               | Build orchestration & caching (🔥)  |
+| **Yarn Workspaces / npm Workspaces** | [Yarn Docs](https://classic.yarnpkg.com/lang/en/docs/workspaces/) | Built-in package manager support    |
 
+---
 
+## 🚀 Why We’re Using Turborepo
 
+Turborepo is currently one of the most relevant tools — it offers extra benefits like **build optimizations**.
+
+![Turborepo Overview](https://github.com/user-attachments/assets/e2f8e5df-1b1a-4782-9a02-501ced3c450d)
+
+---
+
+## 🧱 Before You Dive In: Build Systems & Orchestrators
+
+![Build System Diagram](https://github.com/user-attachments/assets/639f27cb-880c-4842-ade3-42e6a04afaf3)
+
+### 🛠️ What is a Build System?
+
+A **build system** automates the process of transforming source code into something that can be run on a computer.
+For JS/TS projects, this includes:
+
+* Transpilation (e.g., TS → JS)
+* Bundling
+* Minification
+* Running tests
+* Linting
+* Deployment
+
+---
+
+### 🧩 What is a Build System Orchestrator?
+
+A build system orchestrator (like **Turborepo**) doesn’t *do* the building — it *manages* it.
+
+Turborepo allows you to define tasks that call other tools (e.g., `tsc`, `vite`) to do the actual work.
+
+---
+
+## 🚦 Turborepo as a Build System Orchestrator
+
+Turborepo’s superpowers:
+
+### 1. ⚡ Caching
+
+Caches the output of tasks — if nothing has changed, it reuses results instead of running the task again.
+
+### 2. 🧠 Dependency Graph Awareness
+
+Knows which packages depend on each other and runs tasks in the correct order.
+
+### 3. 🚀 Parallelization
+
+Runs independent tasks in parallel — efficient resource usage = faster builds.
+
+![Turborepo Tasks](https://github.com/user-attachments/assets/8eb8b3ff-79d5-4f24-a6d3-f26c24c11084)
+
+---
+
+Let me know if you'd like:
+
+* A table of contents
+* Converting this into a GitHub wiki
+* Badge styling
+* Emoji-free version
+
+Would you like me to create a PR-ready version of this file for GitHub?
