@@ -112,11 +112,80 @@ Runs independent tasks in parallel — efficient resource usage = faster builds.
 
 ---
 
-Let me know if you'd like:
+🧩 Project Structure & Workspaces
 
-* A table of contents
-* Converting this into a GitHub wiki
-* Badge styling
-* Emoji-free version
+This monorepo has 5 modules:
+👥 End-User Applications
 
-Would you like me to create a PR-ready version of this file for GitHub?
+    apps/web – A Next.js-based website.
+
+    apps/docs – Documentation website for the project.
+
+🧰 Helper Packages
+
+    packages/ui – Shared UI components.
+
+    packages/typescript-config – Shared TypeScript configuration.
+
+    packages/eslint-config – Shared ESLint configuration.
+
+📦 Workspace Dependency Graph
+
+🔍 Root package.json — Scripts & Workspaces
+
+{
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
+
+    turbo build: Builds all apps/packages that support it.
+
+    turbo dev: Runs dev mode in relevant workspaces.
+
+    turbo lint: Lints the entire workspace using Turbo.
+
+    🛠️ Turbo executes tasks across all matching submodules if they support the command.
+
+🧠 Understanding packages/ui
+📁 packages/ui/package.json
+
+{
+  "name": "@repo/ui",
+  "exports": {
+    "./button": "./src/button.tsx",
+    "./card": "./src/card.tsx",
+    "./code": "./src/code.tsx"
+  }
+}
+
+📥 How UI Is Imported in Pages
+
+import { Button } from "@repo/ui/button";
+
+<Button appName="web" className={styles.button}>
+  Click me!
+</Button>
+
+📄 apps/web/package.json Dependencies
+
+"dependencies": {
+  "@repo/ui": "*",
+  "next": "^14.1.1",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0"
+}
+
+📁 What Is the turbo/ Folder?
+
+This is a new folder introduced in Turborepo to manage code generation and other core concepts.
+
+📖 More info: Turborepo Docs – Code Generation
+
+
